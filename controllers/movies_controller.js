@@ -23,7 +23,7 @@ movie.get('/popular', async (req, res) => {
 
 movie.get('/:movieId', async (req, res) => {
     let response = await axios.get(`https://api.themoviedb.org/3/movie/${req.params.movieId}?api_key=${process.env.API_KEY}&language=en-US`)
-    res.status(200).send(response.data.original_title)
+    res.status(200).send(response.data)
 })
 
 // Movie Cast and Crew
