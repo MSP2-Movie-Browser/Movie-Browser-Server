@@ -2,10 +2,10 @@ const express = require('express')
 const review = express.Router()
 const axios = require('axios')
 const cors = require('cors')
+const app = express()
+const Review = require('../models/review')
 
-// const Review = require('../models/reviews')
-
-
+app.use(express.json())
 
 review.get('/:movieId', async (req, res) => {
     let response = await axios.get(`https://api.themoviedb.org/3/movie/${req.params.movieId}/reviews?api_key=${process.env.API_KEY}&language=en-US&page=1`)
@@ -13,18 +13,29 @@ review.get('/:movieId', async (req, res) => {
 })
 
 
-// review.post('/', async (req, res) => {
-//     const { content } = req.body;
+review.post('/', (req, res) => {
+    const { movieTitle, author, content }  = req.body;
     
-//     const review = await new Review({
-//         author: req.
-//         content: req.
-//     }).save();
+    const addReview = new Review({
+        movieTitle,
+        author,
+        content
+    }).save();
+    console.log(req.body);
+    res.status(200).send(req.body)
+});
 
-//     await Review.findOneAndUpdate({ _id: boardId }, { $push: { lists: list._id }})
-
-//     res.status(200).json(review);
-// });
+review.put('/', (req, res) => {
+    const { movieTitle, author, content }  = req.body;
+    
+    const addReview = new Review({
+        movieTitle,
+        author,
+        content
+    }).save();
+    console.log(req.body);
+    res.status(200).send(req.body)
+});
 
 
 

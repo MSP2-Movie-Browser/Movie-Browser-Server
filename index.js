@@ -8,6 +8,7 @@ const mongoose = require('mongoose')
 
 
 app.use(cors())
+app.use(express.json())
 // MIDDLEWARE
 app.set('views', __dirname + '/views')
 app.set('view engine', 'jsx')
