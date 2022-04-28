@@ -29,6 +29,9 @@ app.use('/actor', actorsController)
 const reviewsController = require('./controllers/reviews_controller')
 app.use('/review', reviewsController)
 
+const favoritesController = require('./controllers/favorites_controller')
+app.use('/favorite', favoritesController)
+
 app.get('*', (req, res) => {
     res.status(404).send('<h1>404: Not Found</h1>')
 })
