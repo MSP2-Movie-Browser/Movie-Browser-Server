@@ -17,7 +17,7 @@ app.engine('jsx', require('express-react-views').createEngine())
 
 
 app.get('/', (req, res) => {
-    res.status(200).send('Please use /album/:artistId to search for all albums by artist or /song/:albumId to search for all songs by an album id')
+    res.status(200).send('<h1>Welcome to What the Flix!!</h1>')
 })
 
 const moviesController = require('./controllers/movies_controller')
