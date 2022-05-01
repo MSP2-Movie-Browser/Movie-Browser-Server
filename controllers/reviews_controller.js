@@ -7,8 +7,19 @@ const Review = require('../models/review')
 
 app.use(express.json())
 
+review.get('/new', (req, res) => {
+    Review.find()
+        .then(foundReview => {
+            console.log()
+            res.send({review: foundReview})
+        })
+        
+     
+})
+
 review.get('/:movieId', async (req, res) => {
     let response = await axios.get(`https://api.themoviedb.org/3/movie/${req.params.movieId}/reviews?api_key=${process.env.API_KEY}&language=en-US&page=1`)
+    console.log(response.data.results[0].author_details.avatar_path);
     res.status(200).send(response.data)
 })
 
