@@ -40,7 +40,7 @@ app.get('*', (req, res) => {
 })
 
 // database
-mongoose.connect(`mongodb+srv://${process.env.MONGO_URI}admin:admin@cluster0.os38h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(`mongodb+srv://${process.env.MONGO_URI}:admin@cluster0.os38h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true})
   .then(m => console.log('db connected'))
   .catch(e => console.log(e))
 
