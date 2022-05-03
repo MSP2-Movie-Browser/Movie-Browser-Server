@@ -4,9 +4,10 @@ const axios = require('axios')
 const cors = require('cors')
 const app = express()
 const mongoose = require('mongoose')
+const path = require('path')
 
 
-
+app.use(express.static(path.join(__dirname, 'build')));
 app.use(cors())
 app.use(express.json())
 // MIDDLEWARE
@@ -14,7 +15,9 @@ app.set('views', __dirname + '/views')
 app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
 
-
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.get('/', (req, res) => {
     res.status(200).send('<h1>Welcome to What the Flix!!</h1>')
@@ -41,6 +44,6 @@ mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopolo
   .then(m => console.log('db connected'))
   .catch(e => console.log(e))
 
-// app.listen(process.env.PORT || 4000, () => console.log(`Listening on ${process.env.PORT || 4000}`))
-app.listen(process.env.PORT, () => console.log(`Listening on ${process.env.PORT}`))
+app.listen(process.env.PORT || 3005, () => console.log(`Listening on ${process.env.PORT || 3005}`))
+// app.listen(process.env.PORT || 3005, () => console.log(`Listening on ${process.env.PORT} \\`))
 
