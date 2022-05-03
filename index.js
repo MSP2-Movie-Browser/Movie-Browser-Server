@@ -38,9 +38,9 @@ app.use('/favorite', favoritesController)
 app.get('*', (req, res) => {
     res.status(404).send('<h1>404: Not Found</h1>')
 })
-
+mongodb+srv://admin:admin@cluster0.os38h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 // database
-mongoose.connect(`mongodb+srv://${process.env.MONGO_URI}:admin@cluster0.os38h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(`mongodb+srv://admin:${process.env.MONGO_URI}@cluster0.os38h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true})
   .then(m => console.log('db connected'))
   .catch(e => console.log(e))
 
